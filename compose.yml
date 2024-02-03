@@ -1,0 +1,15 @@
+services:
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    ports:
+      - 7700:7700
+    environment:
+      MEILI_ENV: development
+    volumes:
+        - imdb-meilisearch-data2:/meili_data
+  seeder:
+    build: .
+    command:
+      - --meili-host=http://meilisearch:7700
+volumes:
+    imdb-meilisearch-data2:
