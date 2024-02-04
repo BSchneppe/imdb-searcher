@@ -1,4 +1,4 @@
-module imdb-seeder
+module imdb-searcher
 
 go 1.21.3
 
