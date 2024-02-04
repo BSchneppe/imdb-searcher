@@ -37,7 +37,7 @@ jobs:
             org.opencontainers.image.vendor=Schneppe
           tags: |
             type=sha,prefix={{branch}}-,suffix=-${{ github.run_number }}
-            type=latest
+            latest
       - name: Build and push Docker image
         uses: docker/build-push-action@v2.9.0
         with:
