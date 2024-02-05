@@ -2,10 +2,11 @@ package imdb_searcher
 
 import (
 	"context"
-	meilisearch_client "imdb-seeder/internal/pkg/search/meilisearch"
 	"log"
 	"os"
 	"testing"
+
+	meilisearch_client "github.com/BSchneppe/imdb-searcher/internal/pkg/search/meilisearch"
 
 	"github.com/meilisearch/meilisearch-go"
 	"github.com/testcontainers/testcontainers-go"

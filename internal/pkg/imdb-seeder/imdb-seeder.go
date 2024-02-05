@@ -4,13 +4,14 @@ import (
 	"compress/gzip"
 	"crypto/tls"
 	"html"
-	meilisearch_client "imdb-seeder/internal/pkg/search/meilisearch"
-	"imdb-seeder/internal/pkg/tsv_reader"
 	"io"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	meilisearch_client "github.com/BSchneppe/imdb-searcher/internal/pkg/search/meilisearch"
+	"github.com/BSchneppe/imdb-searcher/internal/pkg/tsv_reader"
 
 	"github.com/meilisearch/meilisearch-go"
 	"go.uber.org/zap"

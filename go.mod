@@ -1,4 +1,4 @@
-module imdb-searcher
+module github.com/BSchneppe/imdb-searcher
 
 go 1.21.3
 

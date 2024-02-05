@@ -2,10 +2,11 @@ package imdb_searcher
 
 import (
 	"fmt"
-	"imdb-seeder/internal/pkg/search"
-	meilisearch_client "imdb-seeder/internal/pkg/search/meilisearch"
 	"regexp"
 	"strconv"
+
+	"github.com/BSchneppe/imdb-searcher/internal/pkg/search"
+	meilisearch_client "github.com/BSchneppe/imdb-searcher/internal/pkg/search/meilisearch"
 
 	"go.uber.org/zap"
 

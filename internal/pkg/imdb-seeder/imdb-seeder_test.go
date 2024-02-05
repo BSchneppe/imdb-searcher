@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
-	meilisearch_client "imdb-seeder/internal/pkg/search/meilisearch"
 	"log"
 	"net/http"
 	"os"
 	"testing"
+
+	meilisearch_client "github.com/BSchneppe/imdb-searcher/internal/pkg/search/meilisearch"
 
 	"github.com/jarcoal/httpmock"
 	"github.com/meilisearch/meilisearch-go"

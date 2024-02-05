@@ -4,9 +4,10 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	imdb_seeder "imdb-seeder/internal/pkg/imdb-seeder"
 	"os"
 	"time"
+
+	imdb_seeder "github.com/BSchneppe/imdb-searcher/internal/pkg/imdb-seeder"
 
 	"github.com/meilisearch/meilisearch-go"
 	"go.uber.org/zap"
@@ -16,12 +17,10 @@ import (
 
 var cfg meilisearch.ClientConfig
 
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "imdb-seeder",
+var seedCmd = &cobra.Command{
+	Use:   "seed",
 	Short: "This is a CLI tool to seed the IMDB database into MeiliSearch.",
 	Long:  `This should be run as a cron job to keep the MeiliSearch database up to date with the latest IMDB data.`,
-
 	Run: func(cmd *cobra.Command, args []string) {
 		debugEnabled, _ := cmd.Flags().GetBool("debug")
 		logger, _ := zap.NewProduction()
@@ -33,6 +32,11 @@ var rootCmd = &cobra.Command{
 		}
 		imdb_seeder.Seed(cfg, logger)
 	},
+}
+
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &cobra.Command{
+	Use: "imdb-searcher",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -50,6 +54,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&cfg.Host, "meili-host", "", "Host of your Meilisearch database")
 	rootCmd.PersistentFlags().StringVar(&cfg.APIKey, "meili-api-key", "", "API Key for accessing Meilisearch")
 	rootCmd.PersistentFlags().DurationVar(&cfg.Timeout, "meili-timeout", 5*time.Second, "Timeout duration (e.g., 5s, 1m)")
+	rootCmd.AddCommand(seedCmd)
 	err := rootCmd.MarkPersistentFlagRequired("meili-host")
 	if err != nil {
 		os.Exit(1)
